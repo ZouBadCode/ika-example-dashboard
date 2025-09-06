@@ -1,69 +1,38 @@
-# React + TypeScript + Vite
+# 🐙 IKA Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**IKA Network** is a high-performance, zero-trust Multi-Party Computation (MPC) network built on the Sui blockchain. It delivers sub-second latency, supports thousands of signer nodes, and can process up to 10,000 threshold signatures per second—enabling secure, real-time, cross-chain functionality without relying on bridges or wrapped tokens :contentReference[oaicite:0]{index=0}.
 
-Currently, two official plugins are available:
+At its core, IKA is powered by its novel **2PC-MPC** (two-party ECDSA plus MPC) protocol, which ensures non-collusive, cryptographically enforced signing where the user always participates, while hundreds of nodes collectively contribute to the signature process :contentReference[oaicite:1]{index=1}.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Why IKA Matters
 
-## Expanding the ESLint configuration
+- **Native Cross-Chain Control**: Sui smart contracts can directly manage assets on chains like Bitcoin and Ethereum through programmable wallets (dWallets), eliminating bridging risks :contentReference[oaicite:2]{index=2}.  
+- **Unmatched Speed & Scale**: Achieves sub-second latency and handles thousands of signatures per second across hundreds of nodes :contentReference[oaicite:3]{index=3}.  
+- **Zero-Trust Architecture**: No single node holds full control; every signature requires explicit user participation :contentReference[oaicite:4]{index=4}.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### This Repository
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+This repository implements the **IKA Network’s SDK** and wraps it into an interactive **dashboard**, empowering developers to easily learn, experiment, and test cross-chain interactions using IKA.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+#### Features
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Visual dashboard for interacting with IKA’s dWallets and 2PC-MPC flows  
+- Example workflows for cross-chain asset control (e.g. signing transactions for Bitcoin, Ethereum)  
+- Real-time status and metrics of IKA network operations  
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+To add the IKA SDK to your own project, choose your preferred package manager:
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+```bash
+# npm
+npm install @ika.xyz/sdk
+
+# pnpm
+pnpm add @ika.xyz/sdk
+
+# bun
+bun add @ika.xyz/sdk
+
+# yarn
+yarn add @ika.xyz/sdk

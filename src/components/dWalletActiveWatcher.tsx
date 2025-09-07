@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import { CodeBlock } from "@/components/ui/code-block";
 import ReactJson from "react-json-view";
 import { ensureIkaInitialized } from "@/lib/ika";
 import { toPrintableJSON } from "@/utils/printableJson";
@@ -110,6 +111,10 @@ export default function DWalletActiveWatcher() {
         <p className="text-sm text-muted-foreground">
           Manually polls the dWallet state until it becomes <code>Active</code>, or until timeout.
         </p>
+        <CodeBlock
+          small
+          code={`// Core logic showcased\nconst dWallet = await ika.getDWallet(dWalletID);\n// Repeated until dWallet.state.$kind === 'Active'`}
+        />
       </header>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">

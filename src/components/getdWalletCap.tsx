@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { CodeBlock } from "@/components/ui/code-block";
 import ReactJson from "react-json-view";
 import { ensureIkaInitialized } from "@/lib/ika";
 import { toPrintableJSON } from "@/utils/printableJson";
@@ -45,6 +46,9 @@ export default function GetDWalletCaps() {
     return (
         <section className="space-y-4">
             <h2 className="text-lg font-semibold">DWallet Caps Queryer</h2>
+            <CodeBlock
+                code={`// Core paginated call\nconst { dWalletCaps, cursor, hasNextPage } = await ika.getOwnedDWalletCaps(address, cursor, 50);`}
+            />
 
             <div className="flex items-center gap-3">
                 <Input

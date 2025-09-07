@@ -1,6 +1,7 @@
 import { useMemo, useRef, useState } from "react";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
+import { CodeBlock } from "@/components/ui/code-block";
 import ReactJson from "react-json-view";
 import { ensureIkaInitialized } from "@/lib/ika";
 
@@ -170,6 +171,9 @@ export default function DWalletBatchQueryer() {
   return (
     <section className="space-y-4">
       <h2 className="text-lg font-semibold">DWallet Batch Queryer</h2>
+      <CodeBlock
+        code={`// Core batched call (if available)\nconst arr = await ika.getMultipleDWallets(ids);\n// Fallback per ID: await ika.getDWallet(id)`}
+      />
 
       {/* Input block */}
       <div className="grid gap-3">

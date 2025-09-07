@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { CodeBlock } from "@/components/ui/code-block";
 import ReactJson from "react-json-view";
 import { ensureIkaInitialized } from "@/lib/ika";
 import { toPrintableJSON } from "@/utils/printableJson";
@@ -33,6 +34,9 @@ export default function GetPartialUserSignature() {
   return (
     <section className="space-y-4">
       <h2 className="text-lg font-semibold">DWallet Queryer</h2>
+      <CodeBlock
+        code={`// Core SDK call\nconst partial = await ika.getPartialUserSignature(partialUserSignature);`}
+      />
 
       <div className="flex items-center gap-3">
         <Input

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import { CodeBlock } from "@/components/ui/code-block";
 import ReactJson from "react-json-view";
 import { ensureIkaInitialized } from "@/lib/ika";
 import { toPrintableJSON } from "@/utils/printableJson";
@@ -117,6 +118,10 @@ export default function PartialUserSignatureCompletedWatcher() {
         <p className="text-sm text-muted-foreground">
           Polls the partial signature until it reaches <code>Completed</code>, or until timeout.
         </p>
+        <CodeBlock
+          small
+          code={`// Core polling target\nawait ika.getPartialUserSignature(partialID);\n// Stop when state === 'Completed'`}
+        />
       </header>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">

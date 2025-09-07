@@ -8,6 +8,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import ika from "@/assets/ika.png";
+import { ConnectButton } from '@mysten/dapp-kit';
+import { useSelectedNetwork } from '@/components/Providers';
 function isFolder(node: any) {
   return Array.isArray(node.children) && node.children.length > 0 && !node.path;
 }
@@ -45,6 +47,36 @@ function TopItem({ node }: { node: any }) {
   return null;
 }
 
+const NETWORK_LABEL: Record<string, string> = {
+  mainnet: 'Mainnet',
+  testnet: 'Testnet',
+  devnet: 'Devnet',
+};
+
+function NetworkSwitcher() {
+  const { network, setNetwork } = useSelectedNetwork();
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" size="sm" className="font-medium min-w-[90px] justify-between">
+          {NETWORK_LABEL[network]}<span className="ml-1 text-xs opacity-70">▾</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="min-w-[140px]">
+        {(['mainnet','testnet','devnet'] as const).map(n => (
+          <DropdownMenuItem
+            key={n}
+            onClick={() => setNetwork(n)}
+            className={network === n ? 'font-semibold text-primary' : ''}
+          >
+            {NETWORK_LABEL[n]}
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
 export default function Navbar() {
   const { menuTree } = buildMenuAndRoutes();
   const loc = useLocation();
@@ -64,8 +96,12 @@ export default function Navbar() {
             ))}
           </nav>
 
-          <div className="text-xs text-muted-foreground">
-            {loc.pathname}
+          <div className="flex items-center gap-3">
+            <NetworkSwitcher />
+            <ConnectButton />
+            <div className="hidden md:block text-xs text-muted-foreground">
+              {loc.pathname}
+            </div>
           </div>
         </div>
       </div>

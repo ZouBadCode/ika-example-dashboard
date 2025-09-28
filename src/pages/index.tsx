@@ -1,6 +1,8 @@
 export const meta = {
   title: "Home",
   order: 0,
+  // 顯式指定路徑，讓此頁成為 /index
+  path: "/index",
 };
 
 export default function HomePage() {

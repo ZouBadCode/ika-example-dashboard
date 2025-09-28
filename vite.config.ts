@@ -10,4 +10,11 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  assetsInclude: ['**/*.wasm'],
+  optimizeDeps: {
+    exclude: ['@ika.xyz/ika-wasm']
+  },
+  build: {
+    target: 'esnext'
+  }
 })
